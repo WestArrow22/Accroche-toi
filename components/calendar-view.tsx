@@ -48,11 +48,18 @@ export function CalendarView({ studentId, events, onAddEvent, onUpdateEvent, onD
   const [selectedDate, setSelectedDate] = useState<string>("")
   const [showAddDialog, setShowAddDialog] = useState(false)
   const [editingEvent, setEditingEvent] = useState<CalendarEvent | null>(null)
-  const [newEvent, setNewEvent] = useState({
+  const [newEvent, setNewEvent] = useState<{
+    title: string
+    description: string
+    date: string
+    type: "exam" | "homework" | "appointment"
+    examSize?: "small" | "large"
+  }>({
     title: "",
     description: "",
     date: "",
-    type: "homework" as "exam" | "homework" | "appointment",
+    type: "homework",
+    examSize: undefined,
   })
 
   const months = [
@@ -219,30 +226,40 @@ export function CalendarView({ studentId, events, onAddEvent, onUpdateEvent, onD
   }
 
   const handleAddEvent = () => {
-    if (newEvent.title && newEvent.date) {
-      const mainEvent = {
-        ...newEvent,
-        completed: newEvent.type === "homework" ? false : undefined,
-      }
+  if (newEvent.title && newEvent.date) {
+    // 1. ID für das Hauptevent generieren
+    const mainEventId =
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2)
 
-      // Hauptevent hinzufügen
-      onAddEvent(mainEvent)
-
-      // Automatische Spaced Repetition Events generieren
-      const autoEvents = generateSpacedRepetitionEvents(mainEvent)
-      autoEvents.forEach((event) => onAddEvent(event))
-
-      setNewEvent({
-        title: "",
-        description: "",
-        date: "",
-        type: "homework",
-        examSize: undefined,
-      })
-      setShowAddDialog(false)
+    const mainEvent = {
+      ...newEvent,
+      completed: newEvent.type === "homework" ? false : undefined,
+      id: mainEventId,
     }
-  }
 
+    // 2. Hauptevent ohne ID an onAddEvent übergeben
+    const { id, ...mainEventWithoutId } = mainEvent
+    onAddEvent(mainEventWithoutId)
+
+    // 3. Automatische Spaced Repetition Events generieren
+    const autoEvents = generateSpacedRepetitionEvents(mainEvent)
+    autoEvents.forEach((event) => {
+      const { id, ...autoEventWithoutId } = event
+      onAddEvent(autoEventWithoutId)
+       })
+
+    setNewEvent({
+      title: "",
+      description: "",
+      date: "",
+      type: "homework",
+      examSize: undefined,
+    })
+    setShowAddDialog(false)
+  }
+}
   const handleEditEvent = (event: CalendarEvent) => {
     setEditingEvent(event)
     setNewEvent({

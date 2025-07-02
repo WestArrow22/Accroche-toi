@@ -223,7 +223,7 @@ const initialStudents: Student[] = [
         completed: false,
       },
     ],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("1"),
     weeklyStats: {
       completedHabits: 12,
       completedTasks: 8,
@@ -280,7 +280,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("3"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -307,7 +307,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("4"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -334,7 +334,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("5"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -361,7 +361,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("6"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -388,7 +388,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("7"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -415,7 +415,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("8"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -442,7 +442,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("9"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -469,7 +469,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("10"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -496,7 +496,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("11"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -523,7 +523,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("12"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -550,7 +550,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("13"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -577,7 +577,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("14"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -604,7 +604,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("15"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -631,7 +631,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("16"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -658,7 +658,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("17"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -685,7 +685,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("18"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -712,7 +712,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("19"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -739,7 +739,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("20"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -766,7 +766,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("21"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -793,7 +793,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("22"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -820,7 +820,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("23"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -847,7 +847,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("24"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -874,7 +874,7 @@ const initialStudents: Student[] = [
       nextLevelXP: 100,
     },
     calendarEvents: [],
-    dailyTasks: generateDailyTasks(),
+    dailyTasks: generateDailyTasks("25"),
     weeklyStats: {
       completedHabits: 0,
       completedTasks: 0,
@@ -1161,7 +1161,7 @@ export default function PasApasApp() {
     }
   }
 
-  const updateStudentRewards = (studentId: string, action: "habit" | "learning" | "newHabit" | "streak") => {
+  const updateStudentRewards = (studentId: string, action: "habit" | "learning" | "newHabit" | "streak" | "groupLearning") => {
     // Diese Funktion wird jetzt direkt in den anderen Funktionen behandelt
     console.log("updateStudentRewards called for:", studentId, action)
   }
@@ -1233,32 +1233,32 @@ export default function PasApasApp() {
     if (newStudentName.trim()) {
       const accessCode = generateAccessCode()
       const newStudent: Student = {
-        id: Date.now().toString(),
-        name: newStudentName,
-        accessCode: accessCode,
-        habits: [],
-        learningMethods: learningMethods.map((method) => ({
-          method,
-          sessionsThisWeek: 0,
-          totalSessions: 0,
-        })),
-        rewards: {
-          elixir: 0,
-          gold: 0,
-          level: 1,
-          experiencePoints: 0,
-          nextLevelXP: 100,
-        },
-        calendarEvents: [],
-        dailyTasks: generateDailyTasks(),
-        weeklyStats: {
-          completedHabits: 0,
-          completedTasks: 0,
-          learningMethodsUsed: 0,
-          totalPoints: 0,
-        },
-        activities: [],
-      }
+          id: Date.now().toString(),
+          name: newStudentName,
+          accessCode: accessCode,
+          habits: [],
+          learningMethods: learningMethods.map((method) => ({
+            method,
+            sessionsThisWeek: 0,
+            totalSessions: 0,
+          })),
+          rewards: {
+            elixir: 0,
+            gold: 0,
+            level: 1,
+            experiencePoints: 0,
+            nextLevelXP: 100,
+          },
+          calendarEvents: [],
+          dailyTasks: generateDailyTasks(Date.now().toString()),
+          weeklyStats: {
+            completedHabits: 0,
+            completedTasks: 0,
+            learningMethodsUsed: 0,
+            totalPoints: 0,
+          },
+          activities: [],
+        }
       setStudents([...students, newStudent])
       setNewStudentName("")
       alert(`Schüler hinzugefügt! Zugangscode: ${accessCode}`)
@@ -1275,8 +1275,9 @@ export default function PasApasApp() {
 
     const newStudents = names.map((name) => {
       const accessCode = generateAccessCode()
+      const id = Date.now().toString() + Math.random().toString(36).substr(2, 9)
       return {
-        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        id: id,
         name: name,
         accessCode: accessCode,
         habits: [],
@@ -1293,7 +1294,7 @@ export default function PasApasApp() {
           nextLevelXP: 100,
         },
         calendarEvents: [],
-        dailyTasks: generateDailyTasks(),
+        dailyTasks: generateDailyTasks(id),
         weeklyStats: {
           completedHabits: 0,
           completedTasks: 0,
@@ -3481,5 +3482,31 @@ export default function PasApasApp() {
 }
 
 const updateEmailSettings = (studentId: string, emailSettings: any) => {
-  setStudents(students.map((student) => (student.id === studentId ? { ...student, emailSettings } : student)))
+  setStudents((prevStudents: Student[]) =>
+    prevStudents.map((student) =>
+      student.id === studentId ? { ...student, emailSettings } : student
+    )
+  )
 }
+
+
+function setStudents(arg0: (prevStudents: Student[]) => (Student | {
+  emailSettings: any; id: string; name: string; accessCode: string; habits: Gewohnheit[]; learningMethods: LearningMethodProgress[]; rewards: RewardData; calendarEvents: CalendarEvent[]; dailyTasks: DailyTask[]; weeklyStats: {
+    completedHabits: number
+    completedTasks: number
+    learningMethodsUsed: number
+    totalPoints: number
+  }; activities: Array<{
+    date: string
+    type: "habit" | "task" | "learning"
+    points: number
+    name: string
+  }>; lastTaskDate?: string
+})[]) {
+  throw new Error("Function not implemented.")
+}
+// setStudents is provided by useLocalStorage above, so this stub is not needed and should be removed.
+// The actual setStudents comes from:
+//   const [students, setStudents, studentsStorage] = useLocalStorage<Student[]>("pasapas-students", initialStudents)
+// Remove this unused stub implementation.
+
