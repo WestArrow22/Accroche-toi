@@ -1,6 +1,7 @@
 "use client"
+import supabase from '@/lib/supabaseClient'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -147,6 +148,25 @@ export function DailyTasks({ studentId, tasks, onCompleteTask, onResetTasks }: D
   const [selectedTask, setSelectedTask] = useState<DailyTask | null>(null)
   const [keywordInput, setKeywordInput] = useState("")
   const [showDialog, setShowDialog] = useState(false)
+
+  const [dbTasks, setDbTasks] = useState<DailyTask[]>([])
+
+  useEffect(() => {
+    const loadTasks = async () => {
+      const { data, error } = await supabase
+        .from('daily_tasks')
+        .select('*')
+        .eq('student_id', studentId)
+
+      if (error) {
+        console.error('❌ Fehler beim Laden der Tasks aus Supabase:', error.message)
+      } else {
+        setDbTasks(data as DailyTask[])
+      }
+    }
+
+    loadTasks()
+  }, [studentId])
 
   // Prüfe ob neue Tasks für heute generiert werden müssen
   const today = new Date().toDateString()

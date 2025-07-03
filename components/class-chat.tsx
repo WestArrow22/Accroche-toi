@@ -1,4 +1,5 @@
 "use client"
+import supabase from '@/lib/supabaseClient'
 
 import type React from "react"
 
@@ -31,25 +32,71 @@ export function ClassChat({
   currentUserId,
   currentUserName,
   currentUserType,
-  messages,
-  onSendMessage,
-}: ClassChatProps) {
+}: {
+  currentUserId: string
+  currentUserName: string
+  currentUserType: "teacher" | "student"
+}) {
   const [newMessage, setNewMessage] = useState("")
+  const [messages, setMessages] = useState<ChatMessage[]>([])
+  const [loading, setLoading] = useState(true)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
 
   // Auto-scroll zu neuen Nachrichten
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight
-    }
-  }, [messages])
+  const loadMessages = async () => {
+    const { data, error } = await supabase
+      .from('chat_messages')
+      .select('*')
+      .order('created_at', { ascending: true })
 
-  const handleSendMessage = () => {
-    if (newMessage.trim()) {
-      onSendMessage(newMessage.trim())
-      setNewMessage("")
+    if (error) {
+      console.error("Fehler beim Laden der Nachrichten:", error.message)
+    } else {
+      setMessages(data as ChatMessage[])
     }
+    setLoading(false)
   }
+
+  loadMessages()
+}, [])
+
+useEffect(() => {
+  const channel = supabase
+    .channel('chat-room')
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'chat_messages',
+    }, (payload) => {
+      setMessages((prev) => [...prev, payload.new as ChatMessage])
+    })
+    .subscribe()
+
+  return () => {
+    supabase.removeChannel(channel)
+  }
+}, [])
+
+  const handleSendMessage = async () => {
+  if (newMessage.trim() === "") return
+
+  const { data, error } = await supabase.from("chat_messages").insert([
+    {
+      sender_id: currentUserId,
+      sender_name: currentUserName,
+      sender_type: currentUserType,
+      message: newMessage.trim(),
+    },
+  ])
+
+  if (error) {
+    console.error("Fehler beim Senden der Nachricht:", error.message)
+  } else {
+    setNewMessage("")
+    // Optional: Push direkt in local messages, oder warten auf Realtime
+  }
+}
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {

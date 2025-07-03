@@ -1,9 +1,11 @@
 "use client"
-
+import supabase from '@/lib/supabaseClient'
+import React from "react"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Eye, Heart, Zap, CheckCircle, EyeOff, Frown, AlertTriangle, X, Target, Brain, Play, Gift } from "lucide-react"
+
 
 interface HabitLoopFormProps {
   habitType: "good" | "bad"

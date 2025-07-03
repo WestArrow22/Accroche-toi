@@ -1,4 +1,5 @@
 "use client"
+import supabase from '@/lib/supabaseClient'
 
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -225,9 +226,9 @@ export function CalendarView({ studentId, events, onAddEvent, onUpdateEvent, onD
     }
   }
 
-  const handleAddEvent = () => {
+const handleAddEvent = async () => {
   if (newEvent.title && newEvent.date) {
-    // 1. ID für das Hauptevent generieren
+    // 🧠 1. ID generieren für das Hauptevent
     const mainEventId =
       typeof crypto !== "undefined" && crypto.randomUUID
         ? crypto.randomUUID()
@@ -239,17 +240,48 @@ export function CalendarView({ studentId, events, onAddEvent, onUpdateEvent, onD
       id: mainEventId,
     }
 
-    // 2. Hauptevent ohne ID an onAddEvent übergeben
+    // 📤 2. Event zu Supabase speichern
+    const { error } = await supabase.from('calendar_events').insert([
+      {
+        id: mainEvent.id,
+        student_id: studentId,
+        title: mainEvent.title,
+        description: mainEvent.description,
+        date: mainEvent.date,
+        type: mainEvent.type,
+        completed: mainEvent.completed,
+        exam_size: mainEvent.examSize,
+        is_auto_generated: false,
+      }
+    ])
+
+    if (error) {
+      console.error('❌ Fehler beim Speichern in Supabase:', error.message)
+      return
+    }
+
+    // ✅ 3. UI aktualisieren
     const { id, ...mainEventWithoutId } = mainEvent
     onAddEvent(mainEventWithoutId)
 
-    // 3. Automatische Spaced Repetition Events generieren
+    // 🔁 4. Automatische Wiederholungstermine erzeugen
     const autoEvents = generateSpacedRepetitionEvents(mainEvent)
-    autoEvents.forEach((event) => {
-      const { id, ...autoEventWithoutId } = event
-      onAddEvent(autoEventWithoutId)
-       })
 
+    for (const event of autoEvents) {
+      const { id, ...eventWithoutId } = event
+      await supabase.from('calendar_events').insert([
+        {
+          ...eventWithoutId,
+          student_id: studentId,
+          is_auto_generated: true,
+          parent_event_id: mainEvent.id,
+          reminder_type: event.reminderType,
+        }
+      ])
+      onAddEvent(eventWithoutId)
+    }
+
+    // 🎯 5. Formular & Dialog zurücksetzen
     setNewEvent({
       title: "",
       description: "",
